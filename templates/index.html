@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Price Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 400px; margin: auto; }
+        .success { color: green; }
+        .danger { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add a Product to Track</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="post">
+            <label for="url">Amazon Product URL:</label><br>
+            <input type="url" id="url" name="url" required style="width:100%"><br><br>
+            <label for="threshold">Price Threshold:</label><br>
+            <input type="number" id="threshold" name="threshold" step="0.01" required style="width:100%"><br><br>
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+</body>
+</html> 
