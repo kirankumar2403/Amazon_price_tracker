@@ -28,5 +28,23 @@
             <button type="submit">Add Product</button>
         </form>
     </div>
+    <div class="container" style="margin-top:40px;">
+        <h2>Price History</h2>
+        {% for url, history in price_history_by_product.items() %}
+        <h3>Product: <a href="{{ url }}" target="_blank">{{ url }}</a></h3>
+        <table border="1" style="width:100%; margin-bottom:30px;">
+            <tr>
+                <th>Timestamp</th>
+                <th>Price</th>
+            </tr>
+            {% for row in history %}
+            <tr>
+                <td>{{ row.timestamp }}</td>
+                <td>{{ row.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+    </div>
 </body>
-</html> 
+</html>

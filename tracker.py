@@ -86,12 +86,12 @@ def main():
     except FileExistsError:
         pass
 
-    schedule.every(10).seconds.do(check_prices)
+    schedule.every(300).seconds.do(check_prices)
     print("Amazon Price Tracker started. Press Ctrl+C to exit.")
     check_prices()
     while True:
         schedule.run_pending()
-        time.sleep(10)
+        time.sleep(300)
 
 if __name__ == "__main__":
-    main() 
+    main()
